@@ -8,7 +8,7 @@ import { ChevronDown, Sun } from 'lucide-react'
 
 export default function Header() {
   return (
-    <div className='px-6 py-3 bg-zinc-50 dark:bg-zinc-900 border-b fixed w-full top-0 flex justify-between'>
+    <div className='px-6 py-3 bg-zinc-50 dark:bg-zinc-900 border-b sticky w-full top-0 flex justify-between z-10'>
       <Image width={40} height={40} src={'/favicon.svg'} alt='Authors Log' />
       <aside className='items-center flex gap-2'>
         <Popover>
