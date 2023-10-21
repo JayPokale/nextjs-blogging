@@ -16,6 +16,7 @@
     "lucide-react": "^0.287.0",
     "next": "13.5.4",
     "novel": "^0.1.22",
+    "openai": "^4.12.4",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^1.14.0",
