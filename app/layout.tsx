@@ -2,10 +2,17 @@ import { cn } from '@/lib/utils'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import localFont from 'next/font/local'
 import Header from '@/components/header'
-import Footer from '@/components/Footer'
+import Footer from '@/components/footer'
 
 const inter = Inter({ subsets: ['latin'] })
+const sailec = localFont({
+  src: [
+    { path: '../public/fonts/Sailec Regular.otf', weight: "400", style: 'normal' },
+    { path: '../public/fonts/Sailec Bold.otf', weight: "700", style: 'bold' }
+  ]
+})
 
 export const metadata: Metadata = {
   title: 'Home | Authors log',
@@ -25,13 +32,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`flex flex-col min-h-screen dark ${inter.className}`}>
-        <>
-          <Header />
-          {children}
-          <Footer />
-        </>
+      <body className={`flex flex-col min-h-screen dark ${inter.className} ${sailec.className}`}>
+        {children}
+        <Footer />
       </body>
+
     </html>
   )
 }

@@ -1,0 +1,200 @@
+[
+  {
+    "title": "The future of artificial intelligence",
+    "thumbnail": "https://i.imgur.com/7n9vJNb.jpg",
+    "topic": "Science",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 5,
+    "desc": "This blog post explores the potential future of artificial intelligence, discussing its potential benefits and risks."
+  },
+  {
+    "title": "The latest advances in quantum computing",
+    "thumbnail": "https://i.imgur.com/auvYQfH.jpg",
+    "topic": "Science",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 7,
+    "desc": "This blog post provides an overview of the latest advances in quantum computing, explaining how it works and its potential applications."
+  },
+  {
+    "title": "The impact of climate change on our planet",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Science",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post discusses the impact of climate change on our planet, examining the evidence for climate change and its potential consequences."
+  },
+  {
+    "title": "The rise of clean energy",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Science",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 4,
+    "desc": "This blog post discusses the rise of clean energy, exploring the different types of clean energy and their potential benefits."
+  },
+  {
+    "title": "The future of space exploration",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Science",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 8,
+    "desc": "This blog post discusses the future of space exploration, examining the latest developments in space technology and their potential implications."
+  },
+  {
+    "title": "The best coding languages to learn in 2023",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Coding",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post provides an overview of the best coding languages to learn in 2023, considering factors such as job demand, salary potential, and ease of learning."
+  },
+  {
+    "title": "The 10 best coding challenges for beginners",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Coding",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 5,
+    "desc": "This blog post provides a list of 10 coding challenges for beginners, designed to help them improve their coding skills."
+  },
+  {
+    "title": "How to build a successful coding portfolio",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Coding",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 7,
+    "desc": "This blog post provides tips on how to build a successful coding portfolio, including advice on choosing projects, showcasing your skills, and getting feedback."
+  },
+  {
+    "title": "The future of web development",
+    "thumbnail": "https://i.imgur.com/7n9vJNb.jpg",
+    "topic": "Web Dev",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 4,
+    "desc": "This blog post discusses the future of web development, examining the latest trends and their potential impact on the industry."
+  },
+  {
+    "title": "The 10 best web development frameworks for 2023",
+    "thumbnail": "https://i.imgur.com/auvYQfH.jpg",
+    "topic": "Web Dev",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 7,
+    "desc": "This blog post provides an overview of the 10 best web development frameworks for 2023, considering factors such as popularity, features, and ease of use."
+  },
+  {
+    "title": "How to build a responsive website",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Web Dev",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post provides a tutorial on how to build a responsive website, explaining the principles of responsive design and how to implement it using HTML, CSS, and JavaScript."
+  },
+  {
+    "title": "The importance of web security",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Web Dev",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 4,
+    "desc": "This blog post discusses the importance of web security, explaining the different types of web security threats and how to protect your website from them."
+  },
+  {
+    "title": "The future of Kotlin",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Kotlin",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 8,
+    "desc": "This blog post discusses the future of Kotlin, examining its potential growth and its adoption by the developer community."
+  },
+  {
+    "title": "The benefits of using Kotlin for Android development",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Kotlin",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post discusses the benefits of using Kotlin for Android development, comparing it to Java and other Android development languages."
+  },
+  {
+    "title": "How to learn Kotlin",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Kotlin",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 5,
+    "desc": "This blog post provides a guide on how to learn Kotlin, including resources for learning the language and tips for getting started."
+  },
+  {
+    "title": "The future of Jetpack Compose",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Jetpack Compose",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 7,
+    "desc": "This blog post discusses the future of Jetpack Compose, examining its potential impact on the Android development community."
+  },
+  {
+    "title": "The benefits of using Jetpack Compose for Android development",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Jetpack Compose",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post discusses the benefits of using Jetpack Compose for Android development, comparing it to XML and other Android UI frameworks."
+  },
+  {
+    "title": "How to learn Jetpack Compose",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Jetpack Compose",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 5,
+    "desc": "This blog post provides a guide on how to learn Jetpack Compose, including resources for learning the framework and tips for getting started."
+  },
+  {
+    "title": "The future of politics",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Politics",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 8,
+    "desc": "This blog post discusses the future of politics, examining the potential impact of new technologies and social movements on the political landscape."
+  },
+  {
+    "title": "The rise of populism",
+    "thumbnail": "https://i.imgur.com/o1L1sFM.jpg",
+    "topic": "Politics",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 6,
+    "desc": "This blog post discusses the rise of populism, examining the factors that have contributed to its growth and its potential consequences."
+  },
+  {
+    "title": "The impact of social media on politics",
+    "thumbnail": "https://i.imgur.com/9u11kbG.jpg",
+    "topic": "Politics",
+    "author": "John Doe",
+    "date": "2023-10-21",
+    "readTime": 5,
+    "desc": "This blog post discusses the impact of social media on politics, examining how social media has changed the way we consume and engage with political news and information."
+  },
+  {
+    "title": "The future of democracy",
+    "thumbnail": "https://i.imgur.com/euzvYgH.jpg",
+    "topic": "Politics",
+    "author": "Jane Doe",
+    "date": "2023-10-21",
+    "readTime": 7,
+    "desc": "This blog post discusses the future of democracy, examining the challenges facing democracy in the 21st century and potential solutions to these challenges."
+  }
+]
