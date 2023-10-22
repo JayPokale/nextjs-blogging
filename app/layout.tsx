@@ -3,14 +3,13 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import localFont from 'next/font/local'
-import Header from '@/components/header'
 import Footer from '@/components/footer'
 
-const inter = Inter({ subsets: ['latin'] })
 const sailec = localFont({
   src: [
     { path: '../public/fonts/Sailec Regular.otf', weight: "400", style: 'normal' },
-    { path: '../public/fonts/Sailec Bold.otf', weight: "700", style: 'bold' }
+    { path: '../public/fonts/Sailec Medium.otf', weight: "500", style: 'medium' },
+    { path: '../public/fonts/Sailec Bold.otf', weight: "700", style: 'bold' },
   ]
 })
 
@@ -32,7 +31,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`flex flex-col min-h-screen dark ${inter.className} ${sailec.className}`}>
+      <body className={`flex flex-col min-h-screen dark ${sailec.className}`}>
         {children}
         <Footer />
       </body>

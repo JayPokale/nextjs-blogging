@@ -5,6 +5,8 @@ import blog from '@/public/blogs.json'
 import Image from 'next/image';
 import { ArrowBigRight, ArrowLeft, ChevronLeft } from 'lucide-react';
 import localFont from 'next/font/local'
+import { Blog } from '@/common';
+import BlogCard from '@/partials/blog-card';
 async function getData(ctx: any) {
   return new Promise((res, rej) => {
     setTimeout(() => {
@@ -15,7 +17,8 @@ async function getData(ctx: any) {
 
 
 export default async function Query(p: any) {
-  const t = await getData(p) as typeof blog
+  const t = await getData(p) as Blog[]
+
   return (
     <section className='bg-zinc-50 flex-1 dark:bg-zinc-900'>
 
@@ -56,30 +59,7 @@ export default async function Query(p: any) {
       <section className='w-11/12 max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 xl:gap-16 py-8'>
         {
           t.map(blog =>
-            <Link href={`/blog/${blog.title}`} key={blog.title} className='space-y-4'>
-              <Image
-                alt={blog.title}
-                className='w-full aspect-video bg-cover rounded'
-                src={"https://plus.unsplash.com/premium_photo-1673280731432-9cc09eb20fed?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bW91bnRhaW4lMjBsYW5kc2NhcGV8ZW58MHx8MHx8fDA%3D"}
-                width={400}
-                height={200}
-              />
-              <div className='flex gap-4 font-semibold'>
-                <p className='text-sm uppercase tracking-wider text-sky-700'>{blog.topic}</p>
-                <p className='text-sm uppercase tracking-wider opacity-60'>{blog.readTime} min</p>
-              </div>
-              <h3 className='text-xl line-clamp-2'>
-                {blog.title}
-              </h3>
-              <section className='opacity-60 text-sm uppercase tracking-wider'>
-                <p>
-                  Written By {blog.author}
-                </p>
-                <p>
-                  {blog.date}
-                </p>
-              </section>
-            </Link>
+            <BlogCard blog={blog} key={blog.title} />
           )
         }
       </section>

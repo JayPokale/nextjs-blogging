@@ -3,21 +3,19 @@
 import { Popover, PopoverContent, PopoverTrigger, Close, PopoverClose } from '@radix-ui/react-popover'
 import Image from 'next/image'
 import React from 'react'
-import { Button } from './ui/button'
-import { ChevronDown, Sun } from 'lucide-react'
 import { Input } from './ui/input'
-import { redirect, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 export default function Header() {
 
   const navigate = useRouter()
   return (
-    <div className='px-6 md:px-12 py-3 bg-zinc-100 dark:bg-zinc-900 border-b fixed w-full top-0 flex justify-between z-10'>
+    <div className='px-6 md:px-12 py-3 bg-zinc-100/70 dark:bg-zinc-950/70 backdrop-filter backdrop-blur-md border-b fixed w-full top-0 flex justify-between items-center z-10'>
       <Link href={'/'}>
         <Image width={40} height={40} src={'/favicon.svg'} alt='Authors Log' />
       </Link>
-      <div className='w-max hidden sm:block '>
+      <div className='w-max hidden sm:block flex-[.3]'>
         <Input type='search' placeholder='eg. blockchain' className='w-full bg-transparent' onKeyDown={e => { if (e.code !== 'Enter') return; else navigate.push(`/search/${e.currentTarget.value}`) }} />
       </div>
       <aside className='items-center flex'>
@@ -31,14 +29,12 @@ export default function Header() {
               </div>
             </article>
           </PopoverTrigger>
-          <PopoverContent className='border p-1 right-0 shadow-md mt-1 bg-white dark:bg-zinc-900 w-full flex-col flex rounded-lg' align='end'>
 
+          <PopoverContent className='border p-1 right-0 shadow-md mt-1 bg-white dark:bg-zinc-900 w-full flex-col flex rounded-lg' align='end'>
             <PopoverClose
               className='py-2 px-4 hover:bg-zinc-200 dark:hover:bg-zinc-800 rounded-md text-left'
-              onClick={_ => console.log('Manage account')}>
-              <Link href={'/me/profile'} >
-                My Profile
-              </Link>
+              onClick={_ => navigate.push('/me/profile')}>
+              My Profile
             </PopoverClose>
 
             <PopoverClose
