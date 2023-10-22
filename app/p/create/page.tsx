@@ -10,9 +10,7 @@ export default function Create() {
           content: [
             {
               type: "heading",
-              attrs: {
-                level: 2,
-              },
+              attrs: { level: 2 },
               content: [
                 {
                   type: "text",
@@ -29,9 +27,7 @@ export default function Create() {
                 },
               ],
             },
-            {
-              type: "paragraph",
-            },
+            { type: "paragraph" },
           ],
         }}
       />
