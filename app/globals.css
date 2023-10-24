@@ -86,3 +86,11 @@ button {
 button:active {
   scale: 0.985;
 }
+
+[contenteditable="true"]:empty:not(:focus):before {
+  content: attr(data-ph);
+  pointer-events: none;
+  opacity: 40%;
+  font-style: italic;
+  font-weight: normal;
+}

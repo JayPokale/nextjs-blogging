@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import Footer from "@/components/footer";
 import Providers from "./providers";
+import Header from "@/components/header";
 
 const sailec = localFont({
   src: [
@@ -41,8 +42,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`flex flex-col min-h-screen dark ${sailec.className}`}>
+      <body className={`flex flex-col min-h-screen ${sailec.className}`}>
         <Providers>
+          <Header />
           {children}
           <Footer />
         </Providers>
