@@ -25,13 +25,15 @@ export default function Editor({
   initialContent,
   editable,
 }: props) {
-  const thumbnailInputRef = useRef<HTMLInputElement>(null);
   const [thumbnail, setThumbnail] = useState("");
+  const thumbnailInputRef = useRef<HTMLInputElement>(null);
+  const [isThumbnailUploading, setIsThumbnailUploading] = useState(false);
+
   const { theme } = useTheme();
   const editorTheme = theme === "light" ? lightDefaultTheme : darkDefaultTheme;
   editorTheme.fontFamily = "Poppins";
   editorTheme.colors.editor.background = "transparent";
-  editorTheme.componentStyles = (theme) => ({
+  editorTheme.componentStyles = () => ({
     Menu: {
       div: {
         fontFamily: "sans-serif",
@@ -83,6 +85,9 @@ export default function Editor({
       <label className="cursor-pointer mx-8">
         {thumbnail ? (
           <div className="relative w-full h-max rounded-xl duration-150">
+            <div className="absolute w-full h-full grid place-items-center backdrop-blur-sm bg-black/25">
+              <div className="relative w-2.5 h-2.5 rounded-full left-[-100px] animate-shadow-rolling"/>
+            </div>
             <Image
               src={thumbnail}
               alt=""
