@@ -27,7 +27,14 @@ export default function Editor({
 }: props) {
   const [thumbnail, setThumbnail] = useState("");
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
-  const [isThumbnailUploading, setIsThumbnailUploading] = useState(false);
+  const [isThumbnailUploading, setIsThumbnailUploading] = useState(true);
+
+  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsThumbnailUploading(true);
+    setThumbnail((prev) =>
+      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : prev
+    );
+  };
 
   const { theme } = useTheme();
   const editorTheme = theme === "light" ? lightDefaultTheme : darkDefaultTheme;
@@ -64,12 +71,6 @@ export default function Editor({
     },
   });
 
-  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setThumbnail(
-      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : ""
-    );
-  };
-
   return (
     <>
       {/* Title */}
@@ -83,10 +84,27 @@ export default function Editor({
 
       {/* Thumbnail */}
       <label className="cursor-pointer mx-8">
+        <input
+          ref={thumbnailInputRef}
+          id="thumbnail"
+          name="thumbnail"
+          type="file"
+          accept="image/*"
+          className="hidden"
+          onChange={handleThumbnailChange}
+        />
         {thumbnail ? (
-          <div className="relative w-full h-max rounded-xl duration-150">
-            <div className="absolute w-full h-full grid place-items-center backdrop-blur-sm bg-black/25">
-              <div className="relative w-2.5 h-2.5 rounded-full left-[-100px] animate-shadow-rolling"/>
+          <div className="relative w-full h-auto rounded-xl overflow-hidden transition-all duration-150">
+            <div
+              className={`absolute w-full h-full grid place-items-center duration-150 ${
+                isThumbnailUploading
+                  ? "backdrop-blur-sm bg-black/20 hover:bg-black/30"
+                  : "hover:bg-black/20"
+              }`}
+            >
+              {isThumbnailUploading && (
+                <div className="relative w-2.5 h-2.5 rounded-full left-[-100px] animate-shadow-rolling" />
+              )}
             </div>
             <Image
               src={thumbnail}
@@ -135,15 +153,6 @@ export default function Editor({
             </div>
           </div>
         )}
-        <input
-          ref={thumbnailInputRef}
-          id="thumbnail"
-          name="thumbnail"
-          type="file"
-          accept="image/*"
-          className="hidden"
-          onChange={handleThumbnailChange}
-        />
       </label>
 
       {/* Editor */}
