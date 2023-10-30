@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -73,7 +75,6 @@
 
   body {
     @apply bg-background text-foreground transition-colors duration-150;
-
   }
 }
 
@@ -83,5 +84,13 @@ button {
 }
 
 button:active {
-  scale: .985;
+  scale: 0.985;
+}
+
+[contenteditable="true"]:empty:not(:focus):before {
+  content: attr(data-ph);
+  pointer-events: none;
+  opacity: 40%;
+  font-style: italic;
+  font-weight: normal;
 }

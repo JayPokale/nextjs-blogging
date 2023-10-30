@@ -2,11 +2,11 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   theme: {
     container: {
       center: true,
@@ -25,6 +25,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          text: "#0a66a6",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -50,6 +51,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        container: {
+          DEFAULT: "#0a66a6",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,12 +69,51 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        shadowRolling: {
+          "0%": {
+            "box-shadow":
+              "0px 0 transparent, 0px 0 transparent, 0px 0 transparent, 0px 0 transparent",
+          },
+          "12%": {
+            "box-shadow":
+              "100px 0 white, 0px 0 transparent, 0px 0 transparent, 0px 0 transparent",
+          },
+          "25%": {
+            "box-shadow":
+              "110px 0 white, 100px 0 white, 0px 0 transparent, 0px 0 transparent",
+          },
+          "36%": {
+            "box-shadow":
+              "120px 0 white, 110px 0 white, 100px 0 white, 0px 0 transparent",
+          },
+          "50%": {
+            "box-shadow":
+              "130px 0 white, 120px 0 white, 110px 0 white, 100px 0 white",
+          },
+          "62%": {
+            "box-shadow":
+              "200px 0 transparent, 130px 0 white, 120px 0 white, 110px 0 white",
+          },
+          "75%": {
+            "box-shadow":
+              "200px 0 transparent, 200px 0 transparent, 130px 0 white, 120px 0 white",
+          },
+          "87%": {
+            "box-shadow":
+              "200px 0 transparent, 200px 0 transparent, 200px 0 transparent, 130px 0 white",
+          },
+          "100%": {
+            "box-shadow":
+              "200px 0 transparent, 200px 0 transparent, 200px 0 transparent, 200px 0 transparent",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "shadow-rolling": "shadowRolling 2s linear infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
