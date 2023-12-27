@@ -1,0 +1,24 @@
+.custom-editor p {
+  font-size: larger;
+}
+
+.custom-editor a {
+  position: relative;
+}
+
+.custom-editor a::before {
+  content: "";
+  background-color: hsla(196, 61%, 58%, 0.75);
+  position: absolute;
+  left: 0;
+  bottom: -10%;
+  width: 100%;
+  height: 15%;
+  z-index: -1;
+  transition: all 0.3s ease-in-out;
+}
+
+.custom-editor a:hover::before {
+  bottom: 0;
+  height: 100%;
+}
