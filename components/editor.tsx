@@ -1,94 +1,50 @@
 "use client";
 
-import { Block, BlockNoteEditor } from "@blocknote/core";
-import {
-  BlockNoteView,
-  DefaultSideMenu,
-  DragHandleMenu,
-  FormattingToolbarPositioner,
-  HyperlinkToolbarPositioner,
-  RemoveBlockButton,
-  SideMenuPositioner,
-  SlashMenuPositioner,
-  darkDefaultTheme,
-  lightDefaultTheme,
-  useBlockNote,
-} from "@blocknote/react";
 import "@blocknote/core/style.css";
-import { useTheme } from "next-themes";
 import { ChangeEvent, useRef, useState } from "react";
 import Image from "next/image";
 import "./editor.css";
+import EditorBlock from "./editorBlock";
 
 type props = {
-  onChange: (value: string) => void;
+  title?: string;
+  thumbnailURL?: string;
   initialContent?: string;
   editable?: boolean;
-  title?: string;
-};
-
-const CustomDragHandleMenu = (props: {
-  editor: BlockNoteEditor;
-  block: Block;
-}) => {
-  return (
-    <DragHandleMenu>
-      <RemoveBlockButton {...props}>Delete</RemoveBlockButton>
-    </DragHandleMenu>
-  );
+  saveToLocal?: boolean;
 };
 
 export default function Editor({
+  saveToLocal = false,
   title = "",
-  onChange,
+  thumbnailURL = "",
   initialContent,
   editable,
 }: props) {
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState(""); // Add thumbnail url to it
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
-  const [isThumbnailUploading, setIsThumbnailUploading] = useState(true);
+  const [isThumbnailUploading, setIsThumbnailUploading] = useState(false);
 
-  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsThumbnailUploading(true);
-    setThumbnail((prev) =>
-      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : prev
-    );
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (saveToLocal) {
+      localStorage.setItem("editor-title", e.target.textContent || "");
+    }
   };
 
-  const { theme } = useTheme();
-  const editorTheme = theme === "light" ? lightDefaultTheme : darkDefaultTheme;
-  editorTheme.fontFamily = "Poppins";
-  editorTheme.colors.editor.background = "transparent";
-  editorTheme.componentStyles = () => ({
-    Menu: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    EditHyperlinkMenu: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    Toolbar: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    Tooltip: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-  });
+  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsThumbnailUploading(false);
+    setThumbnail(() =>
+      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : ""
+    );
 
-  const editor: BlockNoteEditor = useBlockNote({
-    editable,
-    initialContent: initialContent ? JSON.parse(initialContent) : undefined,
-    onEditorContentChange: (editor) => {
-      onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
-    },
-  });
+    // Make it only for cloudinary image
+    if (saveToLocal) {
+      localStorage.setItem(
+        "editor-thumbnail",
+        e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : ""
+      );
+    }
+  };
 
   return (
     <>
@@ -97,6 +53,7 @@ export default function Editor({
         contentEditable={true}
         data-ph="Title"
         className="outline-none mx-8 px-5 py-3 text-5xl font-bold font-[Poppins] border-l-2 border-transparent focus:border-inherit opacity-80"
+        onInput={handleTitleChange}
       >
         {title}
       </div>
@@ -175,22 +132,11 @@ export default function Editor({
       </label>
 
       {/* Editor */}
-      <div className="custom-editor">
-        <BlockNoteView editor={editor} theme={editorTheme}>
-          <FormattingToolbarPositioner editor={editor} />
-          <HyperlinkToolbarPositioner editor={editor} />
-          <SlashMenuPositioner editor={editor} />
-          <SideMenuPositioner
-            editor={editor}
-            sideMenu={(props) => (
-              <DefaultSideMenu
-                {...props}
-                dragHandleMenu={CustomDragHandleMenu}
-              />
-            )}
-          />
-        </BlockNoteView>
-      </div>
+      <EditorBlock
+        initialContent={initialContent}
+        editable={editable}
+        saveToLocal={saveToLocal}
+      />
     </>
   );
 }

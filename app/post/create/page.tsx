@@ -6,7 +6,12 @@ import React from "react";
 export default function Create() {
   return (
     <>
-      <Editor onChange={() => {}} />  
+      <Editor
+        saveToLocal
+        title={localStorage.getItem("editor-title") || ""}
+        thumbnailURL={localStorage.getItem("editor-thumbnail") || ""}
+        initialContent={localStorage.getItem("editor-content") || ""}
+      />
     </>
   );
 }
