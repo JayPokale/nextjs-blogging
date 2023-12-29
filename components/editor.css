@@ -1,0 +1,14 @@
+p {
+  font-size: 19.8px;
+}
+
+a {
+  text-decoration: underline #0175fe;
+  color: #0175fe;
+  text-underline-offset: 5%;
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  text-underline-offset: 15%;
+}

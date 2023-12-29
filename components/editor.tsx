@@ -1,75 +1,50 @@
 "use client";
 
-import { BlockNoteEditor } from "@blocknote/core";
-import {
-  BlockNoteView,
-  darkDefaultTheme,
-  lightDefaultTheme,
-  useBlockNote,
-} from "@blocknote/react";
 import "@blocknote/core/style.css";
-import { useTheme } from "next-themes";
 import { ChangeEvent, useRef, useState } from "react";
 import Image from "next/image";
+import "./editor.css";
+import EditorBlock from "./editorBlock";
 
 type props = {
-  onChange: (value: string) => void;
+  title?: string;
+  thumbnailURL?: string;
   initialContent?: string;
   editable?: boolean;
-  title?: string;
+  saveToLocal?: boolean;
 };
 
 export default function Editor({
+  saveToLocal = false,
   title = "",
-  onChange,
+  thumbnailURL = "",
   initialContent,
   editable,
 }: props) {
-  const [thumbnail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState(""); // Add thumbnail url to it
   const thumbnailInputRef = useRef<HTMLInputElement>(null);
-  const [isThumbnailUploading, setIsThumbnailUploading] = useState(true);
+  const [isThumbnailUploading, setIsThumbnailUploading] = useState(false);
 
-  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setIsThumbnailUploading(true);
-    setThumbnail((prev) =>
-      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : prev
-    );
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (saveToLocal) {
+      localStorage.setItem("editor-title", e.target.textContent || "");
+    }
   };
 
-  const { theme } = useTheme();
-  const editorTheme = theme === "light" ? lightDefaultTheme : darkDefaultTheme;
-  editorTheme.fontFamily = "Poppins";
-  editorTheme.colors.editor.background = "transparent";
-  editorTheme.componentStyles = () => ({
-    Menu: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    EditHyperlinkMenu: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    Toolbar: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-    Tooltip: {
-      div: {
-        fontFamily: "sans-serif",
-      },
-    },
-  });
+  const handleThumbnailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setIsThumbnailUploading(false);
+    setThumbnail(() =>
+      e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : ""
+    );
 
-  const editor: BlockNoteEditor = useBlockNote({
-    editable,
-    initialContent: initialContent ? JSON.parse(initialContent) : undefined,
-    onEditorContentChange: (editor) => {
-      onChange(JSON.stringify(editor.topLevelBlocks, null, 2));
-    },
-  });
+    // Make it only for cloudinary image
+    if (saveToLocal) {
+      localStorage.setItem(
+        "editor-thumbnail",
+        e.target.files?.length ? URL.createObjectURL(e.target.files![0]) : ""
+      );
+    }
+  };
 
   return (
     <>
@@ -78,6 +53,7 @@ export default function Editor({
         contentEditable={true}
         data-ph="Title"
         className="outline-none mx-8 px-5 py-3 text-5xl font-bold font-[Poppins] border-l-2 border-transparent focus:border-inherit opacity-80"
+        onInput={handleTitleChange}
       >
         {title}
       </div>
@@ -131,21 +107,21 @@ export default function Editor({
                   x="5"
                   y="5"
                   stroke="currentColor"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   rx="4"
                 />
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M5.13968 15.32L8.69058 11.5661C9.02934 11.2036 9.48873 11 9.96774 11C10.4467 11 10.9061 11.2036 11.2449 11.5661L15.3871 16M13.5806 14.0664L15.0132 12.533C15.3519 12.1705 15.8113 11.9668 16.2903 11.9668C16.7693 11.9668 17.2287 12.1705 17.5675 12.533L18.841 13.9634"
                 />
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
                   d="M13.7778 9.33331H13.7867"
                 />
               </svg>
@@ -156,7 +132,11 @@ export default function Editor({
       </label>
 
       {/* Editor */}
-      <BlockNoteView editor={editor} theme={editorTheme} />
+      <EditorBlock
+        initialContent={initialContent}
+        editable={editable}
+        saveToLocal={saveToLocal}
+      />
     </>
   );
 }
